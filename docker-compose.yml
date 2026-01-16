@@ -1,0 +1,28 @@
+services:
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    user: root
+    restart: unless-stopped
+    volumes:
+      - "./data/prometheus/tsdb:/tsdb"
+      - "./data/prometheus/config:/config"
+    ports:
+      - '9090:9090'
+    command:
+      - "--config.file=/config/prometheus.yml"
+      - "--storage.tsdb.path=/tsdb"
+      - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+      - "--web.console.templates=/usr/share/prometheus/consoles"
+      - "--storage.tsdb.retention.time=90d"
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    user: root
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - "./data/grafana/lib:/var/lib/grafana"

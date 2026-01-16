@@ -1,0 +1,4 @@
+pymodbus
+pyModbusTCP
+prometheus_client
+numpy
