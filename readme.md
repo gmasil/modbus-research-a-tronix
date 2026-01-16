@@ -1,17 +1,20 @@
-# Holding Registers for A-Trnox Inverter
+# Holding Registers for A-Tronix Inverter
 
-# Certain Values
-Battery SOC %: 31038
-PV Power W: 31064
-House Consumption W: 31127
-Battery Charge Rate W: 31036
-Grid W: 31066
+# Found Registers
+Battery SOC %: 31038  
+PV Power W: 31064  
+House Consumption W: 31127  
+Battery Charge Rate W: 31036  
+Grid W: 31066  
 
+## Prometheus Queries
 
-find out grid:
+Find out grid:
+
 `holding_register{register="31064"} + ignoring(register) holding_register{register="31036"} - ignoring(register) holding_register{register="31127"} or holding_register{register="31066"}`
 
-all found normallized:
+All found normallized:
+
 `( (holding_register{instance="localhost:8998",register=~"31038|31064|31127|31036|31066"} > 32000) - 65535 or (holding_register{instance="localhost:8998",register=~"31038|31064|31127|31036|31066"} <= 32000) )`
 
 ## SOC Battery
@@ -35,13 +38,10 @@ also similar, but seem to include difference to GRID? value too high under littl
 * 31056
 * 39135
 
-# Power into Battery
+## Power into Battery
 * 31036
 negative value is chanrge
 positive value is draw energy
-
-
-
 
 # Archive
 
