@@ -1,6 +1,11 @@
 #! /bin/bash
 
-
+# Hide cursor and reset on exit
+cleanup() {
+    tput cnorm
+}
+trap cleanup EXIT
+tput civis
 
 # echo "Battery Charge: ${data[0]}W"
 # echo "SOC: ${data[1]}%"
@@ -145,12 +150,5 @@ while true; do
         let offset_grid=offset_grid+1
     fi
 
-    # test cursor
-    # tput cup 12 13
-    # echo 'X'
-
-    # put cursor away
-    tput cup 25 0
-
-    sleep 0.2
+    sleep 0.1
 done
