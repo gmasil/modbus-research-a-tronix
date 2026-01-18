@@ -6,6 +6,13 @@ PV Power W: 31064
 House Consumption W: 31127  
 Battery Charge Rate W: 31036  
 Grid W: 31066  
+Inverter Output W: 31125  
+
+Battery Voltage: 31034
+
+# Maybe Registers
+Battery SOH: 31090
+
 
 ## Prometheus Queries
 
