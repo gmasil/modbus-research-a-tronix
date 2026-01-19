@@ -7,12 +7,6 @@ cleanup() {
 trap cleanup EXIT
 tput civis
 
-# echo "Battery Charge: ${data[0]}W"
-# echo "SOC: ${data[1]}%"
-# echo "PV Power: ${data[2]}W"
-# echo "Grid: ${data[3]}W"
-# echo "Consumption: ${data[4]}W"
-
 clear
 tput cup 0 0
 echo '+-----------+                                        '
@@ -77,7 +71,7 @@ offset_load=1
 offset_grid=0
 
 while true; do
-    raw_data=$(curl -s --data-urlencode 'query=holding_register{register=~"31036|31038|31064|31066|31125|31127"}' 'http://192.168.178.104:9090/api/v1/query' | jq -r '.data.result[].value[1]' | tr '\n' ' ')
+    raw_data=$(curl -s --data-urlencode 'query={address=~"31036|31038|31064|31066|31125|31127"}' 'http://192.168.178.104:9090/api/v1/query' | jq -r '.data.result[].value[1]' | tr '\n' ' ')
     declare -a data=(${raw_data})
 
     value_pv=${data[2]}
