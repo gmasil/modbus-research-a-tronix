@@ -2,28 +2,65 @@ from pyModbusTCP.client import ModbusClient
 import prometheus_client as prom
 import numpy as np
 import time
+import json
 
+verbose=False
+
+# load sensors
+sensors = json.loads(open('sensors.json').read())
+
+# prepare sensors and gauges
+for sensor in sensors:
+    sensor["used"] = False
+    if sensor.get("unique_id") is None:
+        print("Found metric without unique_id")
+        exit(1)
+    if sensor.get("name") is None:
+        print("Metric " + sensor.get("unique_id") + " does not have a name")
+        exit(2)
+    if sensor.get("address") is None:
+        print("Metric " + sensor.get("unique_id") + " (" + sensor.get("name") + ") does not have an address")
+        exit(3)
+    if sensor.get("data_type") is None:
+        if verbose:
+            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): data_type is not specified")
+        continue
+    if sensor.get("data_type") != "uint16" and sensor.get("data_type") != "int16":
+        if verbose:
+            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): data_type " + sensor.get("data_type") + " is not recognized")
+        continue
+    if sensor.get("unit_of_measurement") is None:
+        if verbose:
+            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): unit_of_measurement is not specified")
+        continue
+    if sensor.get("input_type") is None:
+        if verbose:
+            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): input_type is not specified")
+        continue
+    if sensor.get("input_type") != "holding":
+        if verbose:
+            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): input_type " + sensor.get("input_type") + " is not recognized")
+        continue
+    sensor["gauge"] = prom.Gauge(sensor.get("unique_id"), sensor.get("name"), ['address', 'data_type', 'unit_of_measurement'])
+    sensor["used"] = True
+
+def update_sensor(client, sensor):
+    if sensor["used"]:
+        values = client.read_holding_registers(sensor.get("address"), 1)
+        if values != None:
+            if sensor.get("data_type") == "uint16":
+                value = values[0]
+            else:
+                value = int(np.uint16(values[0]).astype(np.int16))
+            sensor["gauge"].labels(address=sensor.get("address"),data_type=sensor.get("data_type"),unit_of_measurement=sensor.get("unit_of_measurement")).set(value)
+
+# connect to modbus client
 c = ModbusClient('192.168.178.36', port=502, unit_id = 247, timeout = 2, auto_open=True, auto_close=True)
 
-registers = []
-with open("legal-adresses.txt") as file:
-    for line in file:
-        line_data = line.rstrip().split()
-        if len(line_data) == 1 or line_data[1] != "unused":
-            registers.append(int(line_data[0]))
-
-
-gauge = prom.Gauge('holding_register', 'Generic register gauge', ['register'])
-
-register_gauges = []
-for reg in registers:
-    gauge.labels(register=reg).set(0)
-
+# start server
 prom.start_http_server(8998)
 
+# update values
 while True:
-    for reg in registers:
-        values = c.read_holding_registers(reg, 1)
-        if values != None:
-            value = int(np.uint16(values[0]).astype(np.int16))
-            gauge.labels(register=reg).set(value)
+    for sensor in sensors:
+        update_sensor(c, sensor)

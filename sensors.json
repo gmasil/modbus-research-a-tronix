@@ -1,0 +1,514 @@
+[
+  {
+    "name": "PV1-Voltage",
+    "unique_id": "foxess_inv1_pv1_voltage",
+    "address": 31000,
+    "unit_of_measurement": "V",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "PV1-Current",
+    "unique_id": "foxess_inv1_pv1_current",
+    "address": 31001,
+    "unit_of_measurement": "A",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "PV1-Power",
+    "unique_id": "foxess_inv1_pv1_power",
+    "address": 31002,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "PV2-Voltage",
+    "unique_id": "foxess_inv1_pv2_voltage",
+    "address": 31003,
+    "unit_of_measurement": "V",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "PV2-Current",
+    "unique_id": "foxess_inv1_pv2_current",
+    "address": 31004,
+    "unit_of_measurement": "A",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "PV2-Power",
+    "unique_id": "foxess_inv1_pv2_power",
+    "address": 31005,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Grid Voltage R",
+    "unique_id": "foxess_inv1_grid_voltage_R",
+    "address": 31006,
+    "unit_of_measurement": "V",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Grid Voltage S",
+    "unique_id": "foxess_inv1_grid_voltage_S",
+    "address": 31007,
+    "unit_of_measurement": "V",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Grid Voltage T",
+    "unique_id": "foxess_inv1_grid_voltage_T",
+    "address": 31008,
+    "unit_of_measurement": "V",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Current R",
+    "unique_id": "foxess_inv1_inv_current_R",
+    "address": 31009,
+    "unit_of_measurement": "A",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Current S",
+    "unique_id": "foxess_inv1_inv_current_S",
+    "address": 31010,
+    "unit_of_measurement": "A",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Current T",
+    "unique_id": "foxess_inv1_inv_current_T",
+    "address": 31011,
+    "unit_of_measurement": "A",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Power R",
+    "unique_id": "foxess_inv1_inv_power_R",
+    "address": 31012,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Power S",
+    "unique_id": "foxess_inv1_inv_power_S",
+    "address": 31013,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Power T",
+    "unique_id": "foxess_inv1_inv_power_T",
+    "address": 31014,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Grid Frequency",
+    "unique_id": "foxess_inv1_grid_frequency",
+    "address": 31015,
+    "unit_of_measurement": "Hz",
+    "data_type": "int16",
+    "scale": 0.01,
+    "input_type": "holding"
+  },
+  {
+    "name": "EPS Power R",
+    "unique_id": "foxess_inv1_eps_power_R",
+    "address": 31022,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "EPS Power S",
+    "unique_id": "foxess_inv1_eps_power_S",
+    "address": 31023,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "EPS Power T",
+    "unique_id": "foxess_inv1_eps_power_T",
+    "address": 31024,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "EPS Frequency",
+    "unique_id": "foxess_inv1_eps_frequency",
+    "address": 31025,
+    "unit_of_measurement": "Hz",
+    "data_type": "int16",
+    "scale": 0.01,
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Power R",
+    "unique_id": "foxess_meter1_power_r",
+    "address": 31026,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Power S",
+    "unique_id": "foxess_meter1_power_s",
+    "address": 31027,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Power T",
+    "unique_id": "foxess_meter1_power_t",
+    "address": 31028,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Load Power R",
+    "unique_id": "foxess_inv1_load_power_r",
+    "address": 31029,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Load Power S",
+    "unique_id": "foxess_inv1_load_power_s",
+    "address": 31030,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Load Power T",
+    "unique_id": "foxess_inv1_load_power_t",
+    "address": 31031,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Temperature",
+    "unique_id": "foxess_inv1_inverter_temperature",
+    "address": 31032,
+    "unit_of_measurement": "°C",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inner Temperature",
+    "unique_id": "foxess_inv1_internal_temperature",
+    "address": 31033,
+    "unit_of_measurement": "°C",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Voltage",
+    "unique_id": "foxess_inv1_battery_voltage",
+    "address": 31034,
+    "unit_of_measurement": "V",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Current",
+    "unique_id": "foxess_inv1_battery_current",
+    "address": 31035,
+    "unit_of_measurement": "A",
+    "data_type": "int16",
+    "scale": 0.1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Discharge Power",
+    "unique_id": "foxess_inv1_battery_power",
+    "address": 31036,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Temperature",
+    "unique_id": "foxess_inv1_battery_temperature",
+    "address": 31037,
+    "unit_of_measurement": "°C",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery SoC",
+    "unique_id": "foxess_inv1_battery_soc",
+    "address": 31038,
+    "unit_of_measurement": "%",
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Inverter State Code",
+    "unique_id": "foxess_inv1_state_code",
+    "address": 31041,
+    "data_type": "uint16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Inverter Fault 1 Code",
+    "unique_id": "foxess_inv1_fault1_code",
+    "address": 31044,
+    "data_type": "uint16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Inverter Fault 2 Code",
+    "unique_id": "foxess_inv1_fault2_code",
+    "address": 31045,
+    "data_type": "uint16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Inverter Fault 3 Code",
+    "unique_id": "foxess_inv1_fault3_code",
+    "address": 31046,
+    "data_type": "uint16",
+    "input_type": "holding"
+  },
+  {
+    "name": "PV Power Total",
+    "unique_id": "foxess_inv1_pv_power_total",
+    "address": 31064,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Power Total",
+    "unique_id": "foxess_meter1_power_total",
+    "address": 31066,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inverter Power Total",
+    "unique_id": "foxess_inv1_output_power",
+    "address": 31125,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "House Consumption Power",
+    "unique_id": "foxess_house_consumption_power",
+    "address": 31127,
+    "unit_of_measurement": "W",
+    "data_type": "int16",
+    "scale": 1,
+    "input_type": "holding"
+  },
+  {
+    "name": "Inverter Model",
+    "unique_id": "foxess_inv1_model",
+    "address": 30000,
+    "count": 16,
+    "data_type": "string",
+    "input_type": "holding"
+  },
+  {
+    "name": "PV Energy total",
+    "unique_id": "foxess_inv1_total_pv_energy",
+    "address": 32001,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "PV Energy daily",
+    "unique_id": "foxess_inv1_daily_pv_energy",
+    "address": 32002,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Charge Energy total",
+    "unique_id": "foxess_inv1_total_charge_energy",
+    "address": 32004,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Charge Energy daily",
+    "unique_id": "foxess_inv1_daily_charge_energy",
+    "address": 32005,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Discharge Energy total",
+    "unique_id": "foxess_inv1_total_discharge_energy",
+    "address": 32007,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Battery Discharge Energy daily",
+    "unique_id": "foxess_inv1_daily_discharge_energy",
+    "address": 32008,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Feed-in Energy total",
+    "unique_id": "foxess_sm1_total_feedin_energy",
+    "address": 32010,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Feed-in Energy daily",
+    "unique_id": "foxess_sm1_daily_feedin_energy",
+    "address": 32011,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Consumption Energy total",
+    "unique_id": "foxess_sm1_total_consumption_energy",
+    "address": 32013,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Consumption Energy daily",
+    "unique_id": "foxess_sm1_daily_consumption_energy",
+    "address": 32014,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Output Energy total",
+    "unique_id": "foxess_sm1_total_output_energy",
+    "address": 32016,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Output Energy daily",
+    "unique_id": "foxess_sm1_daily_output_energy",
+    "address": 32017,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Input Energy total",
+    "unique_id": "foxess_sm1_total_input_energy",
+    "address": 32019,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Meter Input Energy daily",
+    "unique_id": "foxess_sm1_daily_input_energy",
+    "address": 32020,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Load Energy total",
+    "unique_id": "foxess_inv1_total_load_energy",
+    "address": 32022,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  },
+  {
+    "name": "Inv Load Energy daily",
+    "unique_id": "foxess_inv1_daily_load_energy",
+    "address": 32023,
+    "unit_of_measurement": "kWh",
+    "scale": 0.1,
+    "data_type": "int16",
+    "input_type": "holding"
+  }
+]
