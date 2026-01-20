@@ -23,25 +23,32 @@ for sensor in sensors:
         exit(3)
     if sensor.get("data_type") is None:
         if verbose:
-            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): data_type is not specified")
+            print("Ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): data_type is not specified")
         continue
     if sensor.get("data_type") != "uint16" and sensor.get("data_type") != "int16":
         if verbose:
-            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): data_type " + sensor.get("data_type") + " is not recognized")
+            print("Ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): data_type " + sensor.get("data_type") + " is not recognized")
         continue
     if sensor.get("unit_of_measurement") is None:
         if verbose:
-            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): unit_of_measurement is not specified")
+            print("Ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): unit_of_measurement is not specified")
         continue
     if sensor.get("input_type") is None:
         if verbose:
-            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): input_type is not specified")
+            print("Ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): input_type is not specified")
         continue
     if sensor.get("input_type") != "holding":
         if verbose:
-            print("ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): input_type " + sensor.get("input_type") + " is not recognized")
+            print("Ignoring metric " + sensor.get("unique_id") + " (" + sensor.get("name") + "): input_type " + sensor.get("input_type") + " is not recognized")
         continue
-    sensor["gauge"] = prom.Gauge(sensor.get("unique_id"), sensor.get("name"), ['address', 'data_type', 'unit_of_measurement'])
+    if sensor.get("scale") is None:
+        sensor["scale"] = 1.0
+    elif isinstance(sensor.get("scale"), int):
+        sensor["scale"] = float(sensor.get("scale"))
+    elif isinstance(sensor.get("scale"), float) == False:
+        print("Metric " + sensor.get("unique_id") + " (" + sensor.get("name") + ") has an invalid scale: " + str(sensor.get("scale")))
+        exit(3)
+    sensor["gauge"] = prom.Gauge(sensor.get("unique_id"), sensor.get("name"), ['address', 'data_type', 'scale', 'unit_of_measurement'])
     sensor["used"] = True
 
 def update_sensor(client, sensor):
@@ -52,7 +59,7 @@ def update_sensor(client, sensor):
                 value = values[0]
             else:
                 value = int(np.uint16(values[0]).astype(np.int16))
-            sensor["gauge"].labels(address=sensor.get("address"),data_type=sensor.get("data_type"),unit_of_measurement=sensor.get("unit_of_measurement")).set(value)
+            sensor["gauge"].labels(address = sensor.get("address"), data_type = sensor.get("data_type"), scale = sensor.get("scale"), unit_of_measurement = sensor.get("unit_of_measurement")).set(value)
 
 # connect to modbus client
 c = ModbusClient('192.168.178.36', port=502, unit_id = 247, timeout = 2, auto_open=True, auto_close=True)
