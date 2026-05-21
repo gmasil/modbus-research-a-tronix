@@ -1,0 +1,100 @@
+views:
+              home:
+                secondary_info: {}
+                entity: sensor.house_consumption_power
+                circle_animation: true
+                subtract_individual: false
+                use_metadata: false
+                override_state: true
+                hide: false
+              individual:
+                - entity: sensor.boiler_hpcurrpower
+                  secondary_info: {}
+                  name: Heatpump
+                  display_zero: true
+                  icon: mdi:heat-pump-outline
+                - entity: sensor.house_generic_power
+                  secondary_info: {}
+                  name: House
+                  icon: mdi:home-lightbulb
+                  display_zero: true
+            clickable_entities: true
+            display_zero_lines:
+              mode: show
+              transparency: 50
+              grey_color:
+                - 189
+                - 189
+                - 189
+            use_new_flow_rate_model: true
+            w_decimals: 0
+            kw_decimals: 1
+            min_flow_rate: 0.75
+            max_flow_rate: 6
+            max_expected_power: 6000
+            min_expected_power: 0.01
+            watt_threshold: 1000
+            transparency_zero_lines: 0
+            sort_individual_devices: false
+          - type: custom:power-flow-card-plus
+            entities:
+              battery:
+                entity: sensor.battery_discharge_power
+                state_of_charge: sensor.battery_soc
+                show_state_of_charge: true
+                display_state: one_way
+                invert_state: false
+                color_value: false
+              grid:
+                entity: sensor.meter_power_total
+                secondary_info:
+                  template: >-
+                    {{ ((states('sensor.meter_consumption_energy_daily') |
+                    float(default=0)) -
+                    (states('sensor.meter_feed_in_energy_daily') |
+                    float(default=0))) ~ " kWh" }}
+                  unit_white_space: false
+                  accept_negative: true
+                  display_zero: true
+                  icon: ''
+                icon: ''
+                display_state: one_way
+                invert_state: true
+                use_metadata: false
+                color_value: false
+              solar:
+                entity: sensor.pv_power_total
+                display_zero_state: true
+                secondary_info:
+                  unit_of_measurement: kWh
+                  decimals: 1
+                  display_zero: true
+                  entity: sensor.pv_energy_daily_2
+                use_metadata: false
+              fossil_fuel_percentage:
+                secondary_info: {}
+              home:
+                secondary_info: {}
+                entity: sensor.house_consumption_power
+                circle_animation: true
+                subtract_individual: false
+                use_metadata: false
+                override_state: true
+                hide: false
+              individual:
+                - entity: sensor.boiler_hpcurrpower
+                  secondary_info:
+                    entity: sensor.compressor_energy_consumption_daily_kwh
+                    unit_of_measurement: kWh
+                    decimals: 1
+                    display_zero: true
+                    accept_negative: true
+                  name: Heatpump
+                  display_zero: true
+                  icon: mdi:heat-pump-outline
+                - entity: sensor.house_generic_power
+                  secondary_info: {}
+                  name: House
+                  icon: mdi:home-lightbulb
+                  display_zero: true
+            clickable_entities: true
